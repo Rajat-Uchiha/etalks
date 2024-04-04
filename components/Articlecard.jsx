@@ -23,7 +23,7 @@ const Articlecard = (props) => {
         />
       </div>
       <div className="my-2">
-        <p className="text-xl">{props.snippet}</p>
+        <p className="text-lg">{props.snippet}</p>
       </div>
     </div>
   );
