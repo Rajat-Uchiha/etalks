@@ -47,13 +47,15 @@ const Slider = () => {
   const [talks, setTalks] = useState([
     {
       id: 1,
-      Question: "Is is really possible to be happy?",
+      Question:
+        "      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero, quidem excepturi nisi expedita laudantium laboriosam quisquam nulla nobis ullam molestiae.",
+
       Answer:
         "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit dolore alias debitis animi dolor natus quidem maxime aperiam saepe nisi.",
     },
     {
       id: 2,
-      Question: "Is is really possible to be happy?",
+      Question: "Which is best to pick? Next.js or React.js",
       Answer:
         "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit dolore alias debitis animi dolor natus quidem maxime aperiam saepe nisi.",
     },
@@ -103,7 +105,7 @@ const Slider = () => {
           </div>
         </section>
       </motion.div>
-      <section className="w-4/5 mx-auto my-20 grid gap-8 grid-cols-3  ">
+      {/* <section className="w-4/5 mx-auto my-20 grid gap-8 grid-cols-3  ">
         {articles.map((item) => {
           return (
             <Articlecard
@@ -113,12 +115,13 @@ const Slider = () => {
             />
           );
         })}
-      </section>
-      <section className="w-4/5 mx-auto my-20 grid gap-8 grid-cols-2  ">
+      </section> */}
+      <section className="w-4/5 mx-auto my-20 grid gap-8 grid-cols-2   ">
         {talks.map((item) => {
           return (
             <Questioncard
               key={item.id}
+              id={item.id}
               Question={item.Question}
               Answer={item.Answer}
             />
