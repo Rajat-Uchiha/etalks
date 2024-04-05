@@ -4,12 +4,10 @@ import React from "react";
 const Navbar = () => {
   return (
     <>
-      <header className="py-4 ">
+      <header className="py-4  ">
         <nav className="font-Jost w-4/5 mx-auto  flex justify-between items-center">
           <div>
-            <h2 className="text-2xl font-medium text-black   underline-offset-2">
-              eTalks
-            </h2>
+            <h2 className="text-2xl font-medium underline-offset-2">eTalks</h2>
           </div>
           <div className=" w-3/5">
             <input

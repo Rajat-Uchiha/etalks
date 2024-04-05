@@ -7,26 +7,30 @@ const Questioncard = (props) => {
   return (
     <div
       title={props.Question}
-      className="w-full text-2xl font-Jost border-b py-2 flex items-center "
+      className="w-full font-Jost border rounded-full px-10 py-5 flex items-center  relative"
     >
-      <div className=" w-[10%]">
+      <div className=" w-[15%]">
         <h1 className="text-6xl font-semibold">{props.id}</h1>
       </div>
       <div className=" w-full">
-        <div className="py-2 max-h-10 overflow-hidden  ">
-          <h2 className="question-title">{props.Question}</h2>
+        <div className="py-2  mb-2 flex items-center justify-between ">
+          <h2 className="question-title text-xl">{props.Question}</h2>
         </div>
         <div>
           <button className="flex text-base justify-center items-center hover:underline hover:underline-offset-2 transition-all">
             Read Answers
-            <span className="border-2 border-black rounded-full bg-black p-1 mx-2">
+            <span className="border-2 border-black rounded-full bg-black mx-2">
               <MdKeyboardArrowRight className="invert" />
             </span>
           </button>
         </div>
-        <div className="flex justify-start items-center space-x-2 my-2">
-          <IoMdArrowUp /> <span className="text-sm">202</span>
-        </div>
+      </div>
+      <button className="flex justify-start items-center  space-x-2 my-2 absolute border rounded-full py-1 px-2 top-0 right-0 text-gray-500 bg-gray-100 ">
+        <IoMdArrowUp className=" scale-110 " />
+        <span className="text-base">5K</span>
+      </button>
+      <div className="flex justify-start items-center  space-x-2 my-2 absolute border rounded-full py-1 px-2 bottom-0 right-0 text-gray-500 bg-gray-100 ">
+        <span className="text-base">1 month ago</span>
       </div>
     </div>
   );
