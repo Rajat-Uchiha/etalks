@@ -105,7 +105,7 @@ const Slider = () => {
           </div>
         </section>
       </motion.div>
-      {/* <section className="w-4/5 mx-auto my-20 grid gap-8 grid-cols-3  ">
+      <section className="w-4/5 mx-auto my-20 grid gap-8 grid-cols-3  ">
         {articles.map((item) => {
           return (
             <Articlecard
@@ -115,7 +115,7 @@ const Slider = () => {
             />
           );
         })}
-      </section> */}
+      </section>
       <section className="w-3/5 mx-auto my-20 grid gap-8 grid-cols-1 lg:grid-cols-1   ">
         {talks.map((item) => {
           return (
