@@ -24,6 +24,9 @@ const Questioncard = (props) => {
             </span>
           </button>
         </div>
+        <div>
+          <p>#university #study</p>
+        </div>
       </div>
       <button className="flex justify-start items-center  space-x-2 my-2 absolute border rounded-full py-1 px-2 top-0 right-0 text-gray-500 bg-gray-100 ">
         <IoMdArrowUp className=" scale-110 " />
