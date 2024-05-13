@@ -1,19 +1,16 @@
 import React from "react";
-
+import Tophastags from "./Tophastags";
 const Topcontributors = () => {
   return (
-    <section className=" font-Jost  w-full sticky py-10 top-0 ">
-      <h3 className="font- text-4xl text-center">Top Contributors </h3>
-      <section className="text-gray-600 body-font   ">
+    <section className=" font-Jost  w-full sticky py-10 top-0  my-10">
+      <h3 className="font- text-3xl text-center">
+        Top Contributors of this Week
+      </h3>
+      <section className="text-gray-600 body-font    ">
         <div className="container px-5 py-10 mx-auto">
           <div className="flex flex-wrap -m-2">
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src="https://dummyimage.com/80x80"
-                />
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Holden Caulfield
@@ -24,11 +21,6 @@ const Topcontributors = () => {
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src="https://dummyimage.com/84x84"
-                />
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Henry Letham
@@ -39,11 +31,6 @@ const Topcontributors = () => {
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src="https://dummyimage.com/88x88"
-                />
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Oskar Blinde
@@ -54,11 +41,6 @@ const Topcontributors = () => {
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src="https://dummyimage.com/90x90"
-                />
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     John Doe
@@ -69,11 +51,6 @@ const Topcontributors = () => {
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src="https://dummyimage.com/94x94"
-                />
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Martin Eden
@@ -84,11 +61,6 @@ const Topcontributors = () => {
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src="https://dummyimage.com/98x98"
-                />
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Boris Kitua
@@ -99,11 +71,6 @@ const Topcontributors = () => {
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src="https://dummyimage.com/100x90"
-                />
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Atticus Finch
@@ -114,11 +81,6 @@ const Topcontributors = () => {
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src="https://dummyimage.com/104x94"
-                />
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Alper Kamu
@@ -129,11 +91,6 @@ const Topcontributors = () => {
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src="https://dummyimage.com/108x98"
-                />
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Rodrigo Monchi
@@ -145,6 +102,7 @@ const Topcontributors = () => {
           </div>
         </div>
       </section>
+      <Tophastags />
     </section>
   );
 };

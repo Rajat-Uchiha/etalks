@@ -5,6 +5,7 @@ import Topcontributors from "./Topcontributors";
 import { MdOutlineQuestionAnswer } from "react-icons/md";
 // import Articlecard from "./Articlecard";
 import Questioncard from "./Questioncard";
+
 const Slider = () => {
   // const [articles, setArticles] = useState([
   //   {
@@ -124,7 +125,7 @@ const Slider = () => {
         </section>
       </motion.div>
 
-      <section className="w-4/5 mx-auto my-20 grid grid-cols-2  gap-4  ">
+      <section className="w-4/5 mx-auto my-20 grid grid-cols-2  gap-10  ">
         <div className="w-full  space-y-4  ">
           {talks.map((item) => {
             return (
@@ -137,7 +138,7 @@ const Slider = () => {
             );
           })}
         </div>
-        <div className="w-full  space-y-4  relative ">
+        <div className="w-full space-y-4 relative ">
           <Topcontributors />
         </div>
       </section>

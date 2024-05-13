@@ -32,7 +32,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ ease: [0.6, 0.01, 0.05, 0.95], duration: 1 }}
-          className=" flex justify-start items-end text-2xl"
+          className=" flex justify-start items-center text-2xl"
         >
           Your Words, your Space, your Impact.
         </motion.div>
