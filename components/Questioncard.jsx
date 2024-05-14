@@ -28,12 +28,12 @@ const Questioncard = (props) => {
           <p>#university #study</p>
         </div>
       </div>
-      <button className="flex justify-start items-center  space-x-2 my-2 absolute border rounded-full py-1 px-2 top-0 -right-5 text-gray-500 bg-gray-100 ">
+      <button className="flex justify-start bg-black/70 text-neutral-200 items-center  space-x-2 my-2 absolute border rounded-full py-1 px-2 top-0 -right-5  ">
         <IoMdArrowUp className=" scale-110 " />
-        <span className="text-base">5K</span>
+        <span className="text-base ">5K</span>
       </button>
-      <div className="flex justify-start items-center  space-x-2 my-2 absolute border rounded-full py-1 px-2 bottom-0 -right-5 text-gray-500 bg-gray-100 ">
-        <span className="text-base">1 month ago</span>
+      <div className="flex justify-start items-center  space-x-2 my-2 absolute border rounded-full py-1 px-2 bottom-0 -right-5 bg-black/70 text-neutral-200 ">
+        <span className="text-base ">1 month ago</span>
       </div>
     </div>
   );
