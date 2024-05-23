@@ -10,12 +10,16 @@
   },
   "dependencies": {
     "@libsql/client": "^0.6.0",
+    "bcryptjs": "^2.4.3",
     "drizzle-orm": "^0.30.10",
     "framer-motion": "^11.0.24",
+    "mongodb": "^6.6.2",
+    "mongoose": "^8.4.0",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^5.0.1"
+    "react-icons": "^5.0.1",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
