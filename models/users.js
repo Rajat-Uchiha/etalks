@@ -18,6 +18,18 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    bio: {
+      type: String,
+    },
+    portfolio: {
+      type: String,
+    },
+    twitter: {
+      type: String,
+    },
+    linkedin: {
+      type: String,
+    },
     isVerified: {
       type: Boolean,
       default: false,

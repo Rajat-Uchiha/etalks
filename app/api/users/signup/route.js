@@ -32,8 +32,6 @@ export const POST = async (NextRequest) => {
 
     const savedUser = await newUser.save();
 
-    console.log(savedUser);
-
     // !send verification mail
 
     // await sendEmail;
