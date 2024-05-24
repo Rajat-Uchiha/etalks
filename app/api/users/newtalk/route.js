@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import connectDb from "@/db/connection";
 import talkvalidation from "@/validations/talks";
 import Talk from "@/models/talks";
