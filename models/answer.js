@@ -1,12 +1,8 @@
 import mongoose from "mongoose";
 
-const talkSchema = new mongoose.Schema(
+const answerSchema = new mongoose.Schema(
   {
-    title: {
-      type: String,
-      required: true,
-    },
-    description: {
+    content: {
       type: String,
       required: true,
     },
@@ -19,6 +15,7 @@ const talkSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Talk = mongoose.models.talks || mongoose.model("talk", talkSchema);
+const Answer =
+  mongoose.models.answers || mongoose.model("answer", answerSchema);
 
-export default Talk;
+export default Answer;

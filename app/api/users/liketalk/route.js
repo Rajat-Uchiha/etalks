@@ -10,7 +10,7 @@ export const POST = async (NextRequest) => {
     const headersList = headers();
     const talkID = headersList.get("talkID");
 
-    //! extract the userID from cookie
+    //! extract the userID from header
     const userID = headersList.get("userID");
 
     // ! check if the user has already liked the talk
