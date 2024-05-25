@@ -1,11 +1,10 @@
-// models/User.js
 import mongoose from "mongoose";
 
-const talkLikeSchema = new mongoose.Schema(
+const likedAnswersSchema = new mongoose.Schema(
   {
-    talkId: {
+    AnswerId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Talk",
+      ref: "Answer",
       required: true,
     },
     likedBy: {
@@ -20,7 +19,8 @@ const talkLikeSchema = new mongoose.Schema(
   }
 );
 
-const TalkLikes =
-  mongoose.models.talkLikes || mongoose.model("talkLikes", talkLikeSchema);
+const LikedAnswers =
+  mongoose.models.likedanswers ||
+  mongoose.model("likedanswers", likedAnswersSchema);
 
-export default TalkLikes;
+export default LikedAnswers;

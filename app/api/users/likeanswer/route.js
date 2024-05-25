@@ -1,43 +1,46 @@
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import connectDb from "@/db/connection";
-import LikedTalks from "@/models/likedtalks";
+import LikedAnswers from "@/models/likedanswers";
 connectDb();
 
 export const POST = async (NextRequest) => {
   try {
     // ! extract talkID from header
     const headersList = headers();
-    const talkID = headersList.get("talkID");
+    const answerId = headersList.get("answerID");
 
     //! extract the userID from header
     const userID = headersList.get("userID");
 
     // ! check if the user has already liked the talk
-    const isTalkLiked = await LikedTalks.find({
-      talkId: talkID,
+    const isAnswerLiked = await LikedAnswers.find({
+      AnswerId: answerId,
       likedBy: userID,
     });
 
-    if (isTalkLiked.length !== 0) {
+    if (isAnswerLiked.length !== 0) {
       //! remove the liked talk from the collection/Table
-      await LikedTalks.findOneAndDelete({ talkId: talkID, likedBy: userID });
-
-      return NextResponse.json({ message: "Talk is unliked successfully" });
-    } else {
-      // ! Store it in the LikedTalks collection
-      const newLikedTalk = await LikedTalks({
-        talkId: talkID,
+      await LikedAnswers.findOneAndDelete({
+        AnswerId: answerId,
         likedBy: userID,
       });
 
-      await newLikedTalk.save();
+      return NextResponse.json({ message: "Answer is unliked successfully" });
+    } else {
+      // ! Store it in the talklikes collection
+      const newLikedAnswer = await LikedAnswers({
+        AnswerId: answerId,
+        likedBy: userID,
+      });
+
+      await newLikedAnswer.save();
 
       return NextResponse.json(
         {
           isValid: true,
-          message: "Talk liked successfully",
-          newLikedTalk,
+          message: "Answer liked successfully",
+          newLikedAnswer,
         },
         { status: 200 }
       );
@@ -47,6 +50,6 @@ export const POST = async (NextRequest) => {
   }
 };
 
-// talkID : 6650abf50257403b11e0ec13
+// answerID : 6651c518adc0586dd9d6b00c
 
 // userID : 664f4e70678580d907d898fe
