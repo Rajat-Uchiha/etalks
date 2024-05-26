@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
@@ -17,12 +18,18 @@ const Navbar = () => {
             />
           </div>
           <div className="space-x-4">
-            <button className="rounded-full px-4 py-3 text-xl font-base hover:underline hover:underline-offset-4">
+            <Link
+              href="/user/login"
+              className="rounded-full px-4 py-3 text-xl font-base hover:underline hover:underline-offset-4"
+            >
               Login
-            </button>
-            <button className=" bg-black text-white rounded-full px-4 py-3 text-xl font-base">
+            </Link>
+            <Link
+              href="/user/signup"
+              className=" bg-black text-white rounded-full px-4 py-3 text-xl font-base"
+            >
               Signup
-            </button>
+            </Link>
           </div>
         </nav>
       </header>
