@@ -7,7 +7,7 @@ const Questioncard = (props) => {
   return (
     <div
       title={props.Question}
-      className="w-full font-Jost rounded-xl border px-10 py-5 flex items-center  relative"
+      className="w-full font-Quicksand rounded-xl border px-10 py-5 flex items-center  relative"
     >
       <div className=" w-[15%]">
         <h1 className="text-6xl font-semibold">{props.id}</h1>

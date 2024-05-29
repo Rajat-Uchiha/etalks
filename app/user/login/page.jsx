@@ -1,12 +1,17 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Google from "@/public/Google.png";
+import Link from "next/link";
+import { LuEye } from "react-icons/lu";
+import toast, { Toaster } from "react-hot-toast";
 const page = () => {
   return (
     <>
       <Navbar />
+      <Toaster position="top-center" />
       <section className="text-gray-600 font-Jost  ">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
@@ -18,7 +23,7 @@ const page = () => {
               strive to create an open and inclusive environment.
             </p>
           </div>
-          <div className="lg:w-1/2 md:w-2/3 w-full mx-auto">
+          <div className="lg:w-1/2 md:w-2/3 w-full mx-auto ">
             <div className=" -m-2">
               <div className="p-2 mx-auto md:w-1/2 w-full">
                 <div className="relative">
@@ -32,24 +37,28 @@ const page = () => {
                     type="email"
                     id="email"
                     name="email"
-                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
-              <div className="p-2 mx-auto md:w-1/2 w-full">
-                <div className="relative">
-                  <label className="leading-7 text-base text-gray-600">
-                    Password
-                  </label>
+              <div className="p-2 mx-auto md:w-1/2 w-full ">
+                <label className="leading-7 text-base text-gray-600">
+                  Password
+                </label>
+                <div className="relative w-full  flex items-center ">
                   <input
                     id="password"
                     name="password"
                     type="password"
-                    className="w-full font-bold bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   ></input>
+                  <button className="border ml-4 rounded border-gray-300 bg-gray-100 ">
+                    <LuEye className="text-4xl my-auto p-1  " />
+                  </button>
                 </div>
               </div>
-              <div className="p-2 mx-auto md:w-1/2 w-full">
+
+              <div className="p-2 mx-auto md:w-1/2 w-full flex justify-between items-center mt-4">
                 <div className="flex space-x-4">
                   <input
                     id="remember"
@@ -61,15 +70,20 @@ const page = () => {
                     Remember me
                   </label>
                 </div>
+                <div>
+                  <Link href="/" className="text-red-500">
+                    Forgot Password?
+                  </Link>
+                </div>
               </div>
 
-              <div className=" w-full my-6 md:w-1/2 mx-auto p-2">
+              <div className=" w-full mt-6 md:w-1/2 mx-auto p-2">
                 <button className="flex w-full justify-center rounded-full mx-auto text-white bg-black border-0 py-2 focus:outline-none hover:scale-105 transition-all text-lg">
                   Login
                 </button>
               </div>
             </div>
-            <div className="text-center font-Jost">
+            <div className="text-center font-Jost my-2 ">
               <span className=" text-gray-400 ">
                 -------------------------------------
               </span>
@@ -78,10 +92,10 @@ const page = () => {
                 -------------------------------------
               </span>
             </div>
-            <div className="p-2 w-full my-6 md:w-1/2 mx-auto ">
+            <div className="p-2 w-full mb-6 md:w-1/2 mx-auto ">
               <button
                 title="Signup using Google"
-                className="flex justify-center  rounded-full mx-auto text-white bg-gray-200 border-0 py-1 w-full focus:outline-none hover:scale-105 transition-all text-lg "
+                className="flex justify-center  rounded-full mx-auto text-white bg-gray-100 border-0 py-1 w-full focus:outline-none hover:scale-105 transition-all text-lg "
               >
                 <Image className="w-10 mx-auto" src={Google} />
               </button>

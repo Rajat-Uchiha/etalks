@@ -2,7 +2,7 @@ import React from "react";
 import Tophastags from "./Tophastags";
 const Topcontributors = () => {
   return (
-    <section className=" font-Jost  w-full sticky py-10 top-0  my-10">
+    <section className=" font-Quicksand  w-full sticky py-10 top-0  my-10">
       <h3 className="font- text-3xl text-center">
         Top Contributors of this Week
       </h3>

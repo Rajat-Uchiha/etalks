@@ -3,7 +3,7 @@ import Image from "next/image";
 import { MdKeyboardArrowRight } from "react-icons/md";
 const Articlecard = (props) => {
   return (
-    <div className="w-full  font-Jost space-y-4 mb-10  ">
+    <div className="w-full  font-Quicksand space-y-4 mb-10  ">
       <div className=" w-1/4 ">
         <h6 className="text-gray-500 bg-gray-100 text-center rounded-full py-2">
           5 min read

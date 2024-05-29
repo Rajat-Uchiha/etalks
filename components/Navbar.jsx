@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
       <header className="py-4  ">
-        <nav className="font-Jost w-4/5 mx-auto  flex justify-between items-center">
+        <nav className="font-Quicksand w-4/5 mx-auto  flex justify-between items-center">
           <div>
             <Link
               href="/"

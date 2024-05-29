@@ -8,16 +8,16 @@ connectDb();
 
 export const POST = async (NextRequest) => {
   try {
-    const { username, email, password } = await NextRequest.json();
+    const { email, password } = await NextRequest.json();
 
-    await userValidationSchema.validate({ username, email, password });
+    await userValidationSchema.validate({ email, password });
 
     const user = await User.findOne({ email });
 
     if (user) {
       return NextResponse.json(
-        { message: "User already exists" },
-        { status: 400 }
+        { message: "User already exists", code: 409 },
+        { status: 409 }
       );
     }
 
@@ -25,7 +25,6 @@ export const POST = async (NextRequest) => {
     const hashedPassword = await bcryptjs.hash(password, salt);
 
     const newUser = new User({
-      username,
       email,
       password: hashedPassword,
     });
@@ -41,6 +40,7 @@ export const POST = async (NextRequest) => {
       {
         isValid: true,
         message: "User registered successfully",
+        code: 200,
         savedUser,
       },
       { status: 200 }

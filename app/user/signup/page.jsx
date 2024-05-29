@@ -1,13 +1,83 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Google from "@/public/Google.png";
-const page = () => {
+import { LuEye, LuEyeOff } from "react-icons/lu";
+import toast, { Toaster } from "react-hot-toast";
+import useSignup from "@/hooks/useSignup";
+import Link from "next/link";
+
+const Page = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cPassword, setCpassword] = useState("");
+  const [isPasswordMatch, setIsPasswordMatch] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const { signupUser } = useSignup();
+
+  const handleConfirmPasswordChange = (e) => {
+    const confirmPasswordValue = e.target.value;
+    setCpassword(confirmPasswordValue);
+    setIsPasswordMatch(confirmPasswordValue === password);
+  };
+
+  const validateEmail = (email) => {
+    const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailFormat.test(email);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) {
+      toast.error("Email is required");
+      return;
+    }
+    if (!validateEmail(email)) {
+      toast.error("Email cannot be validated");
+      return;
+    }
+    if (!password) {
+      toast.error("Password is required");
+      return;
+    }
+    if (password.length < 8) {
+      toast.error("Password must have at least 8 characters");
+      return;
+    }
+    if (cPassword !== password) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    try {
+      const loadingToast = toast.loading("Creating User...");
+      await signupUser(email, password);
+      toast.dismiss(loadingToast);
+      toast.success("User created successfully, Please login to continue");
+
+      setEmail("");
+      setPassword("");
+      setCpassword("");
+    } catch (error) {
+      toast.dismiss(loadingToast);
+      toast.error(error.message || "User cannot be created.");
+    }
+  };
+
   return (
     <>
       <Navbar />
-      <section className="text-gray-600 font-Jost  ">
+      <section className="text-gray-600 font-Jost">
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            loading: { duration: 4000 },
+            success: { duration: 4000 },
+          }}
+        />
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
@@ -20,7 +90,7 @@ const page = () => {
             </p>
           </div>
           <div className="lg:w-1/2 md:w-2/3 w-full mx-auto">
-            <div className=" -m-2">
+            <div className="-m-2">
               <div className="p-2 mx-auto md:w-1/2 w-full">
                 <div className="relative">
                   <label
@@ -31,23 +101,35 @@ const page = () => {
                   </label>
                   <input
                     type="email"
-                    id="email"
-                    name="email"
-                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address"
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
               <div className="p-2 mx-auto md:w-1/2 w-full">
-                <div className="relative">
-                  <label className="leading-7 text-base text-gray-600">
-                    Password
-                  </label>
+                <label className="leading-7 text-base text-gray-600">
+                  Password
+                </label>
+                <div className="relative w-full flex items-center">
                   <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    className="w-full font-bold bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  ></input>
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your Password"
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                  <button
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="border ml-4 rounded border-gray-300 bg-gray-100"
+                  >
+                    {showPassword ? (
+                      <LuEye className="text-4xl my-auto p-1" />
+                    ) : (
+                      <LuEyeOff className="text-4xl my-auto p-1" />
+                    )}
+                  </button>
                 </div>
               </div>
               <div className="p-2 mx-auto md:w-1/2 w-full">
@@ -59,37 +141,54 @@ const page = () => {
                     Confirm Password
                   </label>
                   <input
-                    id="password"
-                    name="password"
                     type="password"
-                    className="w-full font-bold bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  ></input>
+                    value={cPassword}
+                    onChange={handleConfirmPasswordChange}
+                    placeholder="Confirm Password"
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
                 </div>
               </div>
-              <div className=" w-full md:w-1/2 mx-auto p-2">
-                <span className="text-center text-red-500">
+              <div className="w-full md:w-1/2 mx-auto p-2">
+                <span
+                  className={`text-center text-red-500 ${
+                    !isPasswordMatch ? "" : "hidden"
+                  }`}
+                >
                   Passwords do not match
                 </span>
               </div>
-              <div className=" w-full my-6 md:w-1/2 mx-auto p-2">
+              <div className="w-full md:w-1/2 mx-auto p-2">
+                Already have an account ?
+                <Link
+                  href="/user/login"
+                  className="w-full md:w-1/2 mx-auto text-center p-2  text-blue-600 underline underline-offset-2"
+                >
+                  Login here
+                </Link>
+              </div>
+              <div
+                onClick={handleSubmit}
+                className="w-full mt-6 md:w-1/2 mx-auto p-2"
+              >
                 <button className="flex w-full justify-center rounded-full mx-auto text-white bg-black border-0 py-2 focus:outline-none hover:scale-105 transition-all text-lg">
                   Create
                 </button>
               </div>
             </div>
-            <div className="text-center font-Jost">
-              <span className=" text-gray-400 ">
+            <div className="text-center font-Jost my-2">
+              <span className="text-gray-400">
                 -------------------------------------
               </span>
               <span className="font-base text-gray-500 mx-2">OR</span>
-              <span className=" text-gray-400 ">
+              <span className="text-gray-400">
                 -------------------------------------
               </span>
             </div>
-            <div className="p-2 w-full my-6 md:w-1/2 mx-auto ">
+            <div className="p-2 w-full mb-6 md:w-1/2 mx-auto">
               <button
                 title="Signup using Google"
-                className="flex justify-center  rounded-full mx-auto text-white bg-gray-200 border-0 py-1 w-full focus:outline-none hover:scale-105 transition-all text-lg "
+                className="flex justify-center rounded-full mx-auto text-white bg-gray-200 border-0 py-1 w-full focus:outline-none hover:scale-105 transition-all text-lg"
               >
                 <Image className="w-10 mx-auto" src={Google} />
               </button>
@@ -102,4 +201,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

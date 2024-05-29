@@ -2,7 +2,7 @@ import React from "react";
 
 const Tophastags = () => {
   return (
-    <section className=" font-Jost  w-full  py-10    ">
+    <section className=" font-Quicksand  w-full  py-10    ">
       <h3 className="font- text-3xl text-center">Top Hashtags of this Week</h3>
       <section className="text-gray-600 body-font">
         <div className="py-10">
