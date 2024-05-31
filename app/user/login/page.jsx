@@ -7,7 +7,18 @@ import Google from "@/public/Google.png";
 import Link from "next/link";
 import { LuEye } from "react-icons/lu";
 import toast, { Toaster } from "react-hot-toast";
+
 const page = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const handleSubmit = async () => {
+    try {
+    } catch (error) {}
+  };
+
   return (
     <>
       <Navbar />
@@ -78,7 +89,10 @@ const page = () => {
               </div>
 
               <div className=" w-full mt-6 md:w-1/2 mx-auto p-2">
-                <button className="flex w-full justify-center rounded-full mx-auto text-white bg-black border-0 py-2 focus:outline-none hover:scale-105 transition-all text-lg">
+                <button
+                  onClick={handleSubmit}
+                  className="flex w-full justify-center rounded-full mx-auto text-white bg-black border-0 py-2 focus:outline-none hover:scale-105 transition-all text-lg"
+                >
                   Login
                 </button>
               </div>

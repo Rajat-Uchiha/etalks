@@ -1,8 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import connectDb from "@/db/connection";
 import bcryptjs from "bcryptjs";
 import userValidationSchema from "@/validations/users";
 import User from "@/models/users";
+
+// import sendEmail from "@/emails/sendemail";
 
 connectDb();
 
@@ -32,9 +34,10 @@ export const POST = async (NextRequest) => {
     const savedUser = await newUser.save();
 
     // !send verification mail
+    const otp = Math.floor(1000 + Math.random() * 9000);
+    const subject = "Account verification - etalks";
 
-    // await sendEmail;
-    // ({ email, emailType: "VERIFY", userId: savedUser._id });
+    //! await sendEmail(email, subject, otp); => working perfectly only domain needs to be considered.
 
     return NextResponse.json(
       {
@@ -46,6 +49,6 @@ export const POST = async (NextRequest) => {
       { status: 200 }
     );
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    return NextResponse.json({ error });
   }
 };

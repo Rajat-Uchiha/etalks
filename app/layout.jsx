@@ -2,7 +2,7 @@ import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
 export const metadata = {
-  title: "Etalks",
+  title: "Etalks | Fun and knowledge at the same place",
   description: "The ultimate resource sharing platform",
 };
 

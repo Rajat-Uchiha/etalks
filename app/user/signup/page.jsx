@@ -52,8 +52,8 @@ const Page = () => {
       return;
     }
 
+    const loadingToast = toast.loading("Creating User...");
     try {
-      const loadingToast = toast.loading("Creating User...");
       await signupUser(email, password);
       toast.dismiss(loadingToast);
       toast.success("User created successfully, Please login to continue");
@@ -63,7 +63,11 @@ const Page = () => {
       setCpassword("");
     } catch (error) {
       toast.dismiss(loadingToast);
-      toast.error(error.message || "User cannot be created.");
+      if (error.message === "Request failed with status code 409") {
+        toast.error("Email already exists");
+      } else {
+        toast.error(error.message);
+      }
     }
   };
 
