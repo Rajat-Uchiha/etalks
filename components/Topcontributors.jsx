@@ -2,15 +2,15 @@ import React from "react";
 import Tophastags from "./Tophastags";
 const Topcontributors = () => {
   return (
-    <section className=" font-Quicksand  w-full sticky py-10 top-0  my-10">
-      <h3 className="font- text-3xl text-center">
+    <section className=" font-Quicksand  w-full sticky  top-0 pt-10  mb-10 ">
+      <h3 className="font-semibold text-3xl text-center  ">
         Top Contributors of this Week
       </h3>
-      <section className="text-gray-600 body-font    ">
+      <section className="text-gray-600 body-font  font-medium   ">
         <div className="container px-5 py-10 mx-auto">
           <div className="flex flex-wrap -m-2">
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+              <div className="h-full flex items-center border-black border p-4 rounded-lg">
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Holden Caulfield
@@ -20,7 +20,7 @@ const Topcontributors = () => {
               </div>
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+              <div className="h-full flex items-center border-black border p-4 rounded-lg">
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Henry Letham
@@ -30,7 +30,7 @@ const Topcontributors = () => {
               </div>
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+              <div className="h-full flex items-center border-black border p-4 rounded-lg">
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Oskar Blinde
@@ -40,7 +40,7 @@ const Topcontributors = () => {
               </div>
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+              <div className="h-full flex items-center border-black border p-4 rounded-lg">
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     John Doe
@@ -50,7 +50,7 @@ const Topcontributors = () => {
               </div>
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+              <div className="h-full flex items-center border-black border p-4 rounded-lg">
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Martin Eden
@@ -60,7 +60,7 @@ const Topcontributors = () => {
               </div>
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+              <div className="h-full flex items-center border-black border p-4 rounded-lg">
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Boris Kitua
@@ -70,7 +70,7 @@ const Topcontributors = () => {
               </div>
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+              <div className="h-full flex items-center border-black border p-4 rounded-lg">
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Atticus Finch
@@ -80,7 +80,7 @@ const Topcontributors = () => {
               </div>
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+              <div className="h-full flex items-center border-black border p-4 rounded-lg">
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Alper Kamu
@@ -90,7 +90,7 @@ const Topcontributors = () => {
               </div>
             </div>
             <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+              <div className="h-full flex items-center border-black border p-4 rounded-lg">
                 <div className="flex-grow">
                   <h2 className="text-gray-900 title-font font-medium">
                     Rodrigo Monchi

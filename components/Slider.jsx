@@ -116,9 +116,9 @@ const Slider = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: "spring", duration: 0.5, delay: 0.1 }}
       >
-        <section className="w-4/5 mx-auto flex gap-4 font-Quicksand">
-          <div className="w-1/2">
-            <button className="px-10 flex items-center border-b-2 w-full text-start hover:border-b-8 py-4 transition-all border-black text-xl">
+        <section className="w-4/5 mx-auto flex gap-4 font-Quicksand my-10">
+          <div className="w-full">
+            <button className="px-10 flex items-center border-b w-full text-start py-4 transition-all border-black text-xl font-semibold">
               <MdOutlineQuestionAnswer className="mr-4" /> Top Talks
             </button>
           </div>

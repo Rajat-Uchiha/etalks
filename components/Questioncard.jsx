@@ -7,7 +7,7 @@ const Questioncard = (props) => {
   return (
     <div
       title={props.Question}
-      className="w-full font-Quicksand rounded-xl border px-10 py-5 flex items-center  relative"
+      className="w-full font-Quicksand rounded-xl px-10 py-5 flex items-center font-medium  relative border border-black"
     >
       <div className=" w-[15%]">
         <h1 className="text-6xl font-semibold">{props.id}</h1>
@@ -28,11 +28,11 @@ const Questioncard = (props) => {
           <p>#university #study</p>
         </div>
       </div>
-      <button className="flex justify-start bg-black/70 text-neutral-200 items-center  space-x-2 my-2 absolute border rounded-full py-1 px-2 top-0 -right-5  ">
+      <button className="flex justify-start bg-black text-white items-center  space-x-2 my-2 absolute border rounded-full py-1 px-2 top-0 -right-5  ">
         <IoMdArrowUp className=" scale-110 " />
         <span className="text-base ">5K</span>
       </button>
-      <div className="flex justify-start items-center  space-x-2 my-2 absolute border rounded-full py-1 px-2 bottom-0 -right-5 bg-black/70 text-neutral-200 ">
+      <div className="flex justify-start items-center  space-x-2 my-2 absolute border rounded-full py-1 px-2 bottom-0 -right-5 bg-black text-white">
         <span className="text-base ">1 month ago</span>
       </div>
     </div>
