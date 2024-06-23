@@ -1,10 +1,11 @@
-"use client";
 import axios from "axios";
 const useSignup = () => {
-  const signupUser = async (email, password) => {
+  const signupUser = async (name, email, password) => {
     try {
       const response = await axios.post("/api/users/signup", {
+        givenName: name,
         email,
+        image: `https://ui-avatars.com/api/?name=${name}/?background=random`,
         password,
       });
 

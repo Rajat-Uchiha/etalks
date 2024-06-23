@@ -10,7 +10,7 @@ connectDb();
 
 export const POST = async (NextRequest) => {
   try {
-    const { email, password } = await NextRequest.json();
+    const { givenName, email, image, password } = await NextRequest.json();
 
     await userValidationSchema.validate({ email, password });
 
@@ -27,15 +27,17 @@ export const POST = async (NextRequest) => {
     const hashedPassword = await bcryptjs.hash(password, salt);
 
     const newUser = new User({
+      givenName,
       email,
+      image,
       password: hashedPassword,
     });
 
     const savedUser = await newUser.save();
 
     // !send verification mail
-    const otp = Math.floor(1000 + Math.random() * 9000);
-    const subject = "Account verification - etalks";
+    // const otp = Math.floor(1000 + Math.random() * 9000);
+    // const subject = "Account verification - etalks";
 
     //! await sendEmail(email, subject, otp); => working perfectly only domain needs to be considered.
 

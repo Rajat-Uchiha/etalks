@@ -3,9 +3,12 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    username: {
+    givenName: {
       type: String,
-      unique: true,
+      required: true,
+    },
+    familyName: {
+      type: String,
     },
     email: {
       type: String,
@@ -14,6 +17,9 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
     },
     password: {
+      type: String,
+    },
+    image: {
       type: String,
       required: true,
     },

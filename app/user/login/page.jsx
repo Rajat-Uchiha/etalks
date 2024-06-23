@@ -5,18 +5,55 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Google from "@/public/Google.png";
 import Link from "next/link";
-import { LuEye } from "react-icons/lu";
 import toast, { Toaster } from "react-hot-toast";
-
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { LuEye, LuEyeOff } from "react-icons/lu";
+import Cookies from "js-cookie";
 const page = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSubmit = async () => {
+  const validateEmail = (email) => {
+    const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailFormat.test(email);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) {
+      toast.error("Email is required");
+      return;
+    }
+    if (!validateEmail(email)) {
+      toast.error("Email cannot be validated");
+      return;
+    }
+    if (!password) {
+      toast.error("Password is required");
+      return;
+    }
+    if (password.length < 8) {
+      toast.error("Password must have at least 8 characters");
+      return;
+    }
+
+    const loadingToast = toast.loading("Checking credentials...");
     try {
-    } catch (error) {}
+      await axios.post("/api/users/login", { email, password });
+      toast.dismiss(loadingToast);
+      toast.success("User logged in successfully");
+      setEmail("");
+      setPassword("");
+      window.localStorage.setItem("access_token", Cookies.get("access_token"));
+      router.push("/user/profile");
+    } catch (error) {
+      toast.dismiss(loadingToast);
+      toast.error("Username or Password is wrong");
+    }
   };
 
   return (
@@ -47,7 +84,11 @@ const page = () => {
                   <input
                     type="email"
                     id="email"
+                    value={email}
                     name="email"
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
@@ -59,12 +100,25 @@ const page = () => {
                 <div className="relative w-full  flex items-center ">
                   <input
                     id="password"
+                    value={password}
                     name="password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   ></input>
-                  <button className="border ml-4 rounded border-gray-300 bg-gray-100 ">
-                    <LuEye className="text-4xl my-auto p-1  " />
+                  <button
+                    onClick={() => {
+                      setShowPassword(!showPassword);
+                    }}
+                    className="border ml-4 rounded border-gray-300 bg-gray-100 "
+                  >
+                    {showPassword ? (
+                      <LuEye className="text-4xl my-auto p-1" />
+                    ) : (
+                      <LuEyeOff className="text-4xl my-auto p-1" />
+                    )}
                   </button>
                 </div>
               </div>
@@ -108,7 +162,10 @@ const page = () => {
             </div>
             <div className="p-2 w-full mb-6 md:w-1/2 mx-auto ">
               <button
-                title="Signup using Google"
+                onClick={() => {
+                  signIn("google");
+                }}
+                title="Login using Google"
                 className="flex justify-center  rounded-full mx-auto text-white bg-gray-100 border-0 py-1 w-full focus:outline-none hover:scale-105 transition-all text-lg "
               >
                 <Image className="w-10 mx-auto" src={Google} />

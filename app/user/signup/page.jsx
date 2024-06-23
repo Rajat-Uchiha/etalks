@@ -9,14 +9,17 @@ import toast, { Toaster } from "react-hot-toast";
 import useSignup from "@/hooks/useSignup";
 import Link from "next/link";
 
+import { signIn } from "next-auth/react";
+
 const Page = () => {
+  const { signupUser } = useSignup();
+
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCpassword] = useState("");
   const [isPasswordMatch, setIsPasswordMatch] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-
-  const { signupUser } = useSignup();
 
   const handleConfirmPasswordChange = (e) => {
     const confirmPasswordValue = e.target.value;
@@ -54,11 +57,12 @@ const Page = () => {
 
     const loadingToast = toast.loading("Creating User...");
     try {
-      await signupUser(email, password);
+      await signupUser(name, email, password);
       toast.dismiss(loadingToast);
       toast.success("User created successfully, Please login to continue");
 
       setEmail("");
+      setName("");
       setPassword("");
       setCpassword("");
     } catch (error) {
@@ -95,6 +99,23 @@ const Page = () => {
           </div>
           <div className="lg:w-1/2 md:w-2/3 w-full mx-auto">
             <div className="-m-2">
+              <div className="p-2 mx-auto md:w-1/2 w-full">
+                <div className="relative">
+                  <label
+                    htmlFor="name"
+                    className="leading-7 text-base text-gray-600"
+                  >
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter your first name"
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                </div>
+              </div>
               <div className="p-2 mx-auto md:w-1/2 w-full">
                 <div className="relative">
                   <label
@@ -192,6 +213,9 @@ const Page = () => {
             <div className="p-2 w-full mb-6 md:w-1/2 mx-auto">
               <button
                 title="Signup using Google"
+                onClick={() => {
+                  signIn("google");
+                }}
                 className="flex justify-center rounded-full mx-auto text-white bg-gray-200 border-0 py-1 w-full focus:outline-none hover:scale-105 transition-all text-lg"
               >
                 <Image className="w-10 mx-auto" src={Google} />
