@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <header className="bg-cyan-600  text-white py-16">
+    <header className="bg-teal-600  text-white py-16">
       <div className="container mx-auto text-center">
         <h1 className="text-5xl font-bold mb-4">Welcome to eTalks</h1>
         <p className="text-xl mb-8">

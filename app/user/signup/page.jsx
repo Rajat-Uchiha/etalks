@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Google from "@/public/Google.png";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import toast, { Toaster } from "react-hot-toast";
@@ -86,7 +85,7 @@ const Page = () => {
             success: { duration: 4000 },
           }}
         />
-        <div className="container px-5 py-24 mx-auto">
+        <div className="container px-5 py-24 mx-auto font-Quicksand">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
               Create Account
@@ -224,7 +223,7 @@ const Page = () => {
           </div>
         </div>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

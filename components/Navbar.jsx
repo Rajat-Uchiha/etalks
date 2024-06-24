@@ -4,7 +4,7 @@ import Link from "next/link";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="bg-cyan-600 font-Quicksand  shadow-lg">
+    <nav className="bg-teal-600 font-Quicksand  shadow-lg ">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex space-x-4">
@@ -26,7 +26,7 @@ const Navbar = () => {
 
             <a
               href="#signup"
-              className="py-2 px-4 hover:bg-black font-semibold rounded-full bg-white text-cyan-600 hover:text-white duration-200"
+              className="py-2 px-4 hover:bg-black font-semibold rounded-full bg-white text-teal-600 hover:text-white duration-200"
             >
               Sign up
             </a>
