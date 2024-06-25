@@ -9,7 +9,7 @@ const Tophashtags = () => {
             Top Hashtags of the Week
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base font-medium text-gray-500">
-            World's current state of mind.
+            World&lsquo;s current state of mind.
           </p>
         </div>
         <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">

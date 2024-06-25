@@ -10,7 +10,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import Cookies from "js-cookie";
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -168,7 +168,11 @@ const page = () => {
                 title="Login using Google"
                 className="flex justify-center  rounded-full mx-auto text-white bg-gray-100 border-0 py-1 w-full focus:outline-none hover:scale-105 transition-all text-lg "
               >
-                <Image className="w-10 mx-auto" src={Google} />
+                <Image
+                  className="w-10 mx-auto"
+                  alt="Google-icon"
+                  src={Google}
+                />
               </button>
             </div>
           </div>
@@ -179,4 +183,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

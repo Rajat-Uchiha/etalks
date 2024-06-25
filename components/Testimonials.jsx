@@ -28,7 +28,7 @@ const Testimonials = () => {
             {testimonials.map((testimonial, index) => (
               <div key={index} className="carousel-item">
                 <blockquote className="text-xl italic mb-4">
-                  "{testimonial.quote}"
+                  {testimonial.quote}
                 </blockquote>
                 <p className="font-semibold">{testimonial.name}</p>
                 <p className="text-gray-600">{testimonial.position}</p>

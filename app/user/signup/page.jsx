@@ -217,7 +217,11 @@ const Page = () => {
                 }}
                 className="flex justify-center rounded-full mx-auto text-white bg-gray-200 border-0 py-1 w-full focus:outline-none hover:scale-105 transition-all text-lg"
               >
-                <Image className="w-10 mx-auto" src={Google} />
+                <Image
+                  className="w-10 mx-auto"
+                  alt="Google-icon"
+                  src={Google}
+                />
               </button>
             </div>
           </div>

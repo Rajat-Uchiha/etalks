@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 const user = {
   fullName: "Rajat Kalotra",
   userImage: "https://ui-avatars.com/api/?name=Rajat+Kalotra",
@@ -32,7 +33,7 @@ const user = {
   ],
 };
 
-const page = ({
+const Page = ({
   fullName,
   userImage,
   bio,
@@ -49,7 +50,7 @@ const page = ({
       <div className="xl:w-4/6 mx-auto  rounded-lg border-2 bg-white p-8 mb-4 mt-10 font-Quicksand">
         {/* User bio and image */}
         <div className="flex items-center space-x-6">
-          <img
+          <Image
             src={user.userImage}
             alt={user.fullName}
             className="w-20 h-20 rounded-full object-cover "
@@ -248,4 +249,4 @@ const page = ({
   );
 };
 
-export default page;
+export default Page;
