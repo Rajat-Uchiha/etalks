@@ -17,19 +17,19 @@ const Navbar = () => {
           </div>
           {/* Primary Navbar items */}
           <div className="hidden md:flex items-center space-x-1">
-            <a
-              href="#features"
+            <Link
+              href="/user/login"
               className="py-2 px-4 font-semibold  text-white hover:underline hover:underline-offset-4 duration-200"
             >
               Login
-            </a>
+            </Link>
 
-            <a
-              href="#signup"
+            <Link
+              href="/user/signup"
               className="py-2 px-4 hover:bg-black font-semibold rounded-full bg-white text-teal-600 hover:text-white duration-200"
             >
               Sign up
-            </a>
+            </Link>
           </div>
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
