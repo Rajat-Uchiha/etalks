@@ -4,10 +4,8 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Google from "@/public/Google.png";
 import register from "@/public/register.svg";
-import { LuEye, LuEyeOff } from "react-icons/lu";
 import toast, { Toaster } from "react-hot-toast";
 import useSignup from "@/hooks/useSignup";
-import Link from "next/link";
 import Footer from "@/components/Footer";
 
 import { signIn } from "next-auth/react";
@@ -16,7 +14,8 @@ const Page = () => {
   const { signupUser } = useSignup();
 
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [fname, setFName] = useState("");
+  const [lname, setLName] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCpassword] = useState("");
   const [isPasswordMatch, setIsPasswordMatch] = useState(true);
@@ -35,6 +34,14 @@ const Page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!fname) {
+      toast.error("First name is required");
+      return;
+    }
+    if (!lname) {
+      toast.error("Last name is required");
+      return;
+    }
     if (!email) {
       toast.error("Email is required");
       return;
@@ -58,12 +65,13 @@ const Page = () => {
 
     const loadingToast = toast.loading("Creating User...");
     try {
-      await signupUser(name, email, password);
+      await signupUser(fname, lname, email, password);
       toast.dismiss(loadingToast);
       toast.success("User created successfully, Please login to continue");
 
       setEmail("");
-      setName("");
+      setFName("");
+      setLName("");
       setPassword("");
       setCpassword("");
     } catch (error) {
@@ -79,6 +87,7 @@ const Page = () => {
   return (
     <>
       <Navbar />
+      <Toaster />
       <div className="min-h-screen  flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-Quicksand lg:w-11/12 xl:w-4/5 lg:mx-auto ">
         <div className=" w-full  lg:w-1/2 lg:flex lg:items-center lg:justify-center">
           <div className="max-w-md w-full bg-white rounded-lg border-2 p-8">
@@ -97,6 +106,10 @@ const Page = () => {
                   type="text"
                   id="firstName"
                   name="firstName"
+                  value={fname}
+                  onChange={(e) => {
+                    setFName(e.target.value);
+                  }}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
                   placeholder="John"
                 />
@@ -112,6 +125,10 @@ const Page = () => {
                   type="text"
                   id="lastName"
                   name="lastName"
+                  value={lname}
+                  onChange={(e) => {
+                    setLName(e.target.value);
+                  }}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
                   placeholder="Doe"
                 />
@@ -127,6 +144,10 @@ const Page = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
                   placeholder="john.doe@example.com"
                 />
@@ -139,9 +160,13 @@ const Page = () => {
                   Password
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   name="password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
                   placeholder="••••••••"
                 />
@@ -156,13 +181,30 @@ const Page = () => {
                 <input
                   type="password"
                   id="confirmPassword"
+                  onChange={handleConfirmPasswordChange}
                   name="confirmPassword"
+                  value={cPassword}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
                   placeholder="••••••••"
                 />
               </div>
+              <div className="space-x-4 my-4">
+                <input
+                  checked={showPassword}
+                  onChange={() => {
+                    setShowPassword(!showPassword);
+                  }}
+                  type="checkbox"
+                />
+                <label htmlFor="showPassword">Show Password</label>
+              </div>
+              {!isPasswordMatch && cPassword !== "" && password !== "" && (
+                <p className="text-red-500 mb-4"> Passwords do not match </p>
+              )}
+
               <button
                 type="submit"
+                onClick={handleSubmit}
                 className="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500"
               >
                 Sign Up
@@ -171,7 +213,10 @@ const Page = () => {
             <div className="mt-6 text-center">
               <p className="text-gray-600">or</p>
               <div className="tooltip w-full" data-tip="Signup with Google">
-                <button className="w-full bg-gray-200 text-white py-2 rounded-md hover:bg-black  focus:outline-none focus:ring-2 focus:ring-red-500 mt-4 ">
+                <button
+                  onClick={signIn}
+                  className="w-full bg-gray-200 text-white py-2 rounded-md hover:bg-black  focus:outline-none focus:ring-2 focus:ring-red-500 mt-4 "
+                >
                   <Image className="w-8 mx-auto" src={Google}></Image>
                 </button>
               </div>
