@@ -4,25 +4,30 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Google from "@/public/Google.png";
-import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 import login from "@/public/login.jpg";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { LuEye, LuEyeOff } from "react-icons/lu";
 import Cookies from "js-cookie";
+import profileLoader from "@/public/profileLoader.gif";
+
 const page = () => {
+  // ! HOOKS
   const router = useRouter();
+
+  //! COMPONENT STATES
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
+  //! VALIDATE EMAIL FORMAT
   const validateEmail = (email) => {
     const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailFormat.test(email);
   };
 
+  //! HANDLE SUBMIT
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email) {
@@ -44,13 +49,21 @@ const page = () => {
 
     const loadingToast = toast.loading("Checking credentials...");
     try {
-      await axios.post("/api/users/login", { email, password });
-      toast.dismiss(loadingToast);
-      toast.success("User logged in successfully");
-      setEmail("");
-      setPassword("");
-      window.localStorage.setItem("access_token", Cookies.get("access_token"));
-      router.push("/user/profile");
+      const res = await axios.post("/api/users/login", { email, password });
+      if (res) {
+        toast.dismiss(loadingToast);
+        toast.success("User logged in successfully");
+        setEmail("");
+        setPassword("");
+        setShowLoader(true);
+        window.localStorage.setItem(
+          "access_token",
+          Cookies.get("access_token")
+        );
+        setTimeout(() => {
+          router.push("/user/profile");
+        }, 4000); // Show loader for 4 seconds before redirecting to dashboard
+      }
     } catch (error) {
       toast.dismiss(loadingToast);
       toast.error("Username or Password is wrong");
@@ -60,6 +73,7 @@ const page = () => {
   return (
     <>
       <Navbar />
+      <Toaster />
       <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-Quicksand lg:w-11/12 xl:w-4/5 lg:mx-auto ">
         <div className="w-full lg:w-1/2 lg:flex lg:items-center lg:justify-center relative">
           <div className="max-w-md w-full bg-white/95 rounded-lg border-2 p-8">
@@ -78,6 +92,10 @@ const page = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
                   placeholder="john.doe@example.com"
                 />
@@ -92,6 +110,10 @@ const page = () => {
                 <input
                   type="password"
                   id="password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                   name="password"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
                   placeholder="••••••••"
@@ -121,6 +143,7 @@ const page = () => {
               </div>
               <button
                 type="submit"
+                onClick={handleSubmit}
                 className="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500"
               >
                 Login
@@ -143,6 +166,20 @@ const page = () => {
         <div className="w-1/3 mx-auto lg:block hidden">
           <Image className="scale-150" src={login} alt="registration-icon" />
         </div>
+
+        {showLoader && (
+          <div className="fixed inset-0 bg-white flex flex-col items-center justify-center ">
+            <Image
+              src={profileLoader}
+              alt="profile-loader"
+              className="w-[180px]"
+            />
+            <br />
+            <h3 className=" animate-pulse text-base md:text-xl xl:text-2xl font-semibold text-teal-700 tracking-wider font-Poppins">
+              Loading...
+            </h3>
+          </div>
+        )}
       </div>
       <Footer />
     </>

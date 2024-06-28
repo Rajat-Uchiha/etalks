@@ -11,8 +11,10 @@ import Footer from "@/components/Footer";
 import { signIn } from "next-auth/react";
 
 const Page = () => {
+  // ! CUSTOM HOOK
   const { signupUser } = useSignup();
 
+  //! COMPONENT STATES
   const [email, setEmail] = useState("");
   const [fname, setFName] = useState("");
   const [lname, setLName] = useState("");
@@ -21,17 +23,20 @@ const Page = () => {
   const [isPasswordMatch, setIsPasswordMatch] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
 
+  // ! HANDLE CONFIRM PASSWORD
   const handleConfirmPasswordChange = (e) => {
     const confirmPasswordValue = e.target.value;
     setCpassword(confirmPasswordValue);
     setIsPasswordMatch(confirmPasswordValue === password);
   };
 
+  //! VALIDATE EMAIL FORMAT
   const validateEmail = (email) => {
     const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailFormat.test(email);
   };
 
+  //! HANDLE SUBMIT
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!fname) {
@@ -88,7 +93,7 @@ const Page = () => {
     <>
       <Navbar />
       <Toaster />
-      <div className="min-h-screen  flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-Quicksand lg:w-11/12 xl:w-4/5 lg:mx-auto ">
+      <div className="min-h-screen bg-gray-900  flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-Quicksand lg:w-11/12 xl:w-4/5 lg:mx-auto ">
         <div className=" w-full  lg:w-1/2 lg:flex lg:items-center lg:justify-center">
           <div className="max-w-md w-full bg-white rounded-lg border-2 p-8">
             <h2 className="text-3xl font-extrabold text-center text-gray-900 mb-6">
