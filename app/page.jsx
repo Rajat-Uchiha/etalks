@@ -1,11 +1,11 @@
-"use client";
 import React from "react";
-import Auth from "@/components/Auth";
+
+import Landing from "@/components/Landing";
 
 function Home() {
   return (
     <>
-      <Auth />
+      <Landing />
     </>
   );
 }

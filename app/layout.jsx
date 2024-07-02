@@ -9,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="font-Quicksand">
         <NextTopLoader color="#000000" height={8} /> {children}
       </body>
     </html>

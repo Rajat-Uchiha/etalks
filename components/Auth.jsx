@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
-
+import Image from "next/image";
+import auth from "@/public/auth.jpg";
 const Auth = () => {
   const [showLogin, setShowLogin] = useState(true);
 
@@ -11,8 +12,13 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 font-Quicksand">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 font-Quicksand relative">
+      <Image
+        src={auth}
+        className="w-[1980px] h-[100vh] 2xl:w-full object-cover opacity-20 "
+        alt="auth-bg"
+      ></Image>
+      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md absolute z-30 ">
         <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">
           eTalks
         </h1>

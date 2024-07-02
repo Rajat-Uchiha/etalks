@@ -46,22 +46,24 @@ const page = ({
   return (
     <>
       <Navbar />
-      <div className="xl:w-4/6 mx-auto  rounded-lg border-2 bg-white p-8 mb-4 mt-10 font-Quicksand">
+      <div className="xl:w-5/12 mx-auto  rounded-lg border-2 bg-white p-8 mb-4 mt-10 font-Quicksand">
         {/* User bio and image */}
-        <div className="flex items-center space-x-6">
-          <img
-            src={user.userImage}
-            alt={user.fullName}
-            className="w-20 h-20 rounded-full object-cover "
-          />
-          <div>
+        <div className="flex flex-col  items-start">
+          <div className="flex items-center space-x-4">
+            <img
+              src={user.userImage}
+              alt={user.fullName}
+              className="w-20 h-20 rounded-full object-cover "
+            />
             <h1 className="text-4xl font-bold text-gray-800 ">
               {user.fullName}
             </h1>
-            <p className="text-lg text-teal-600 font-medium mt-2">
+          </div>
+          <div>
+            <p className="text-lg text-blue-600 font-medium mt-4">
               {user.profession}
             </p>
-            <p className="text-gray-600 font-medium mt-4">{user.bio}</p>
+            <p className="text-gray-600 font-medium mt-2">{user.bio}</p>
           </div>
         </div>
 
@@ -76,7 +78,7 @@ const page = ({
                 <a
                   key={index}
                   href={link.url}
-                  className="text-teal-600 hover:text-black font-medium"
+                  className="text-blue-600 hover:text-black font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -91,15 +93,15 @@ const page = ({
             </h2>
             <div className="flex space-x-6">
               <div className="flex flex-col items-center">
-                <h6 className="text-2xl font-semibold text-teal-600">991</h6>
+                <h6 className="text-2xl font-semibold text-blue-600">991</h6>
                 <p className="font-medium text-gray-600">Views</p>
               </div>
               <div className="flex flex-col items-center">
-                <h6 className="text-2xl font-semibold text-teal-600">65</h6>
+                <h6 className="text-2xl font-semibold text-blue-600">65</h6>
                 <p className="font-medium text-gray-600">Likes</p>
               </div>
               <div className="flex flex-col items-center">
-                <h6 className="text-2xl font-semibold text-teal-600">991</h6>
+                <h6 className="text-2xl font-semibold text-blue-600">991</h6>
                 <p className="font-medium text-gray-600">Views</p>
               </div>
             </div>
@@ -128,7 +130,7 @@ const page = ({
                 type="text"
                 id="title"
                 name="title"
-                className="w-full px-3 py-2 border-2  rounded-lg focus:outline-none focus:border-teal-500 font-medium"
+                className="w-full px-3 py-2 border-2  rounded-lg focus:outline-none focus:border-blue-500 font-medium"
                 placeholder="Enter the title of your talk"
                 required={true}
               />
@@ -143,7 +145,7 @@ const page = ({
               <textarea
                 id="description"
                 name="description"
-                className="w-full px-3 py-2 border-2  rounded-lg focus:outline-none focus:border-teal-500 font-medium"
+                className="w-full px-3 py-2 border-2  rounded-lg focus:outline-none focus:border-blue-500 font-medium"
                 placeholder="Enter a brief description of your talk"
                 rows="4"
                 required={true}
@@ -151,7 +153,7 @@ const page = ({
             </div>
             <button
               type="submit"
-              className="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700 focus:outline-none focus:bg-teal-700 text-lg font-medium"
+              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:bg-blue-700 text-lg font-medium"
             >
               Submit
             </button>

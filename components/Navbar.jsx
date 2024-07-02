@@ -4,7 +4,7 @@ import Link from "next/link";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="bg-teal-600 font-Quicksand  shadow-lg ">
+    <nav className="bg-blue-600 font-Quicksand  shadow-lg ">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex space-x-4">
@@ -26,9 +26,9 @@ const Navbar = () => {
 
             <Link
               href="/user/signup"
-              className="py-2 px-4 hover:bg-black font-semibold rounded-full bg-white text-teal-600 hover:text-white duration-200"
+              className="py-2 px-4 hover:bg-black font-semibold rounded-full bg-white text-blue-600 hover:text-white duration-200"
             >
-              Sign up
+              Home
             </Link>
           </div>
           {/* Mobile menu button */}
@@ -57,21 +57,7 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isOpen ? "block" : "hidden"} md:hidden`}>
-        <a
-          href="#features"
-          className="block py-2 px-4 text-sm hover:bg-gray-200"
-        >
-          Features
-        </a>
-        <a
-          href="#testimonials"
-          className="block py-2 px-4 text-sm hover:bg-gray-200"
-        >
-          Testimonials
-        </a>
-        <a href="#signup" className="block py-2 px-4 text-sm hover:bg-gray-200">
-          Sign Up
-        </a>
+        <Link href="/">Home</Link>
       </div>
     </nav>
   );
