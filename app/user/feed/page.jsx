@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
+import Image from "next/image";
 const Page = () => {
   const posts = [
     {
@@ -59,7 +60,7 @@ const Page = () => {
             className="mb-8 bg-white rounded-lg  overflow-hidden w-96  mx-auto"
           >
             <div className="flex items-center p-4">
-              <img
+              <Image
                 src={post.avatar}
                 alt={post.username}
                 className="w-12 h-12 rounded-full mr-4"
@@ -69,7 +70,7 @@ const Page = () => {
                 <p className="text-sm text-gray-600">@{post.username}</p>
               </div>
             </div>
-            <img src={post.image} alt={post.caption} className="w-full" />
+            <Image src={post.image} alt={post.caption} className="w-full" />
             <div className="p-4">
               <p className="text-sm text-gray-600">{post.caption}</p>
               <div className="flex items-center mt-4">

@@ -9,9 +9,9 @@ import login from "@/public/login.jpg";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import profileLoader from "@/public/profileLoader.gif";
+import preloader from "@/public/preloader.gif";
 
-const page = () => {
+const Page = () => {
   // ! HOOKS
   const router = useRouter();
 
@@ -186,4 +186,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -1,11 +1,12 @@
 import React from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { BiSolidLike } from "react-icons/bi";
+import Image from "next/image";
 const Feedcard = ({ post }) => {
   return (
     <div key={post.id} className="bg-white p-6 mb-6 rounded-lg shadow-md">
       <div className="flex items-center mb-4">
-        <img
+        <Image
           src={post.userImage}
           alt={post.userName}
           className="w-12 h-12 rounded-full mr-4"

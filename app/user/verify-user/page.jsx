@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [OTP, setOTP] = useState("");
   const [isBtnVisible, setIsBtnVisible] = useState(false);
 
@@ -54,4 +54,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
